@@ -1,0 +1,2 @@
+Put your IWAD files here!
+However auto-configuration (once implemented) will not support anything but DOOM.wad and doom2.wad.
