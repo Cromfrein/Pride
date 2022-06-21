@@ -1,0 +1,34 @@
+#!/bin/bash
+source ~/.dot/.bashrc
+# ask for dotfile 
+read -p "Where is your shell's dotfile?" readshell
+source $readshell
+
+# ask user for installation location
+read -p "Where would you like to install?" pride
+export pride
+sleep 1
+echo "Alright! Installation will begin shortly."
+
+# echo "Copying DOOM folder to $PRIDE"
+cp $PWD/DOOM/ $pride/
+
+# echo "Setting up symlinks for .data"
+ln -s $pride/.data/iwads/ $pride/IWADs/
+ln -s $pride/.data/maps/ $pride/Maps/
+ln -s $pride/.data/mods/ $pride/Mods/
+
+# if using ssgl then this section
+# echo "Setting up waddir symlinks for SSGL"
+# ln -s $pride/.data/mods/ $pride/.ssgl/waddir/
+# ln -s $pride/.data/iwads/ $pride/.ssgl/waddir/
+
+# ask if user wants to install obsidian
+# if yes, clone and build obsidian.
+# echo "Obsidian binary is at" $pride/.obsidian/obsidian
+
+# Ask if user wants to add $pride as an environment variable
+# so that everything works right
+read -p "Add $pride as a permanent environment variable? [y/n]" advar
+# if advar=y, echo export pride=$pride >> $DOTSHELL
+# if advar=n, continue on
