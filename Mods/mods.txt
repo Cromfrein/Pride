@@ -1,0 +1,2 @@
+Please put your mods in their respective folders.
+The auto-launch feature may require some folder shenanigans.
