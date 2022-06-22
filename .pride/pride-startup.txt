@@ -1,0 +1,4 @@
+# echo "Setting up symlinks for .data"
+ln -s $pride/IWADs/*.wad $pride/.data/iwads/
+ln -s $pride/Maps/*.wad $pride/.data/maps/
+ln -s $pride/Mods/ $pride/.data/mods/
