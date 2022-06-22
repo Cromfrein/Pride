@@ -1,30 +1,29 @@
 #!/bin/bash
-source ~/.dot/.bashrc
-# ask for dotfile 
-read -p "Where is your shell's dotfile?" readshell
-source $readshell
+source ~/.crom/.bashrc
 
 # ask user for installation location
-read -p "Where would you like to install?" pride
-export pride
+read -p "Where would you like to install?" insdir
+export pride=$insdir/DOOM/
 sleep 1
 # environment $pride to cromdot bashrc
-echo export pride=$pride >> ~/.dot/.bashrc
+echo export pride=$pride >> $CROMDOT
+
 # and continue
 sleep 1
 echo "Alright! Installation will begin shortly."
 sleep 1
-echo "Copying DOOM folder to "$pride
-cp $PWD/DOOM/ $pride/
-# echo "Setting up symlinks for .data"
-ln -s $pride/IWADs/ $pride/.data/iwads/
-ln -s $pride/Maps/ $pride/.data/maps/
-ln -s $pride/Mods/ $pride/.data/mods
+echo "Copying to "$pride
+cp $PWD/ $pride/DOOM
+
 # if using ssgl then this section
 # echo "Setting up waddir symlinks for SSGL"
 # ln -s $pride/.data/mods/ $pride/.ssgl/waddir/
 # ln -s $pride/.data/iwads/ $pride/.ssgl/waddir/
 
-# ask if user wants to install obsidian
-# if yes, clone and build obsidian.
-# echo "Obsidian binary is at" $pride/.obsidian/obsidian
+read -p "Do you want to install Obsidian map generator? [y/n]" obvar
+if obvar=y
+then
+	git clone https://github.com/dashodanger/Obsidian .obsidian
+	cd .obsidian
+	cmake --preset dist && cmake --build --preset dist
+fi
